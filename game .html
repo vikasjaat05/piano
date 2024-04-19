@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Playable Piano JavaScript | CodingNepal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Import Google font - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      /* background: #E3F2FD; */
+      background-image: url('https://loading.io/assets/mod/spinner/music/lg.gif');
+      
+    }
+
+    .wrapper {
+      padding: 20px 20px;
+      border-radius: 20px;
+      background: #141414;
+    }
+
+    .wrapper header {
+      display: flex;
+      color: #B2B2B2;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h2 {
+      font-size: 1.6rem;
+    }
+
+    header .column {
+      display: flex;
+      align-items: center;
+    }
+
+
+    header input {
+      outline: none;
+      border-radius: 30px;
+    }
+
+    .volume-slider input {
+      accent-color: #fff;
+    }
+
+    .keys-checkbox input {
+      height: 30px;
+      width: 60px;
+      cursor: pointer;
+      appearance: none;
+      position: relative;
+      background: #4B4B4B
+    }
+
+    .keys-checkbox input::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #8c8c8c;
+      transform: translateY(-50%);
+      transition: all 0.3s ease;
+    }
+
+    .keys-checkbox input:checked::before {
+      left: 35px;
+      background: #fff;
+    }
+
+    .piano-keys {
+      display: flex;
+      list-style: none;
+      margin-top: 40px;
+    }
+
+    .piano-keys .key {
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+
+
+    .piano-keys .white {
+      height: 150px;
+      width: 70px;
+      border-radius: 8px;
+      border: 1px solid #000;
+      background: linear-gradient(#fff 96%, #eee 4%);
+    }
+
+    .piano-keys .white.active {
+      box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    }
+
+    @media screen and (max-width: 815px) {
+      .wrapper {
+        padding: 25px;
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      header :where(h2, .column) {
+        margin-bottom: 13px;
+      }
+
+      .volume-slider input {
+        max-width: 100px;
+      }
+
+      .piano-keys {
+        margin-top: 20px;
+      }
+
+      .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
+        display: none;
+      }
+
+     
+      .piano-keys .white {
+        height: 180px;
+        width: 60px;
+      }
+    }
+
+  
+
+      .piano-keys .white {
+        width: 50px;
+      }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h2>Playable PIANO</h2>
+      <div class="column volume-slider">
+        <span>Volume</span><input type="range" min="0" max="1" value="0.5" step="any">
+      </div>
+     
+    </header>
+    <ul class="piano-keys">
+      <li class="a white ">a</li>
+      <li class="w white ">w</li>
+      <li class="s white ">s</li>
+      <li class="e white ">e</li>
+      <li class="d white ">d</li>
+      <li class="f white ">f</li>
+      <li class="t white ">t</li>
+      <li class="g white ">g</li>
+      <li class="y white ">y</li>
+      <li class="j white ">h</li>
+      <li class="u white ">u</li>
+      <li class="j white ">j</li>
+      <li class="k white ">k</li>
+      <li class="o white ">o</li>
+      <li class="l white ">l</li>
+      <li class="p white ">p</li>
+      <li class="; white ">;</li>
+    
+  <
+
+</body>
+<script>
+  var numberOfButtons = document.querySelectorAll(".white ").length;
+  for (var i = 0; i < numberOfButtons; i++) {
+    document.querySelectorAll(".white ")[i].addEventListener("click", function () {
+      var classN = this.innerHTML;
+      makeAnSound(classN);
+      ButtonAnimation(classN);
+    });
+  }
+  document.addEventListener("keydown", function (event) {
+    makeAnSound(event.key);
+    ButtonAnimation(event.key);
+
+
+  });
+  function makeAnSound(key) {
+    switch (key) {
+      case "a":
+
+        var audio = new Audio("tunes/a.wav");
+        audio.play();
+        break;
+
+      case "w":
+        var audio1 = new Audio("tunes/w.wav");
+        audio1.play();
+        break;
+
+        case "s":
+        var audio1 = new Audio("tunes/s.wav");
+        audio1.play();
+        break;
+        case "e":
+        var audio1 = new Audio("tunes/e.wav");
+        audio1.play();
+        break;
+        case "d":
+        var audio1 = new Audio("tunes/d.wav");
+        audio1.play();
+        break;
+        case "r":
+        var audio1 = new Audio("tunes/r.wav");
+        audio1.play();
+        break;
+        case "f":
+        var audio1 = new Audio("tunes/f.wav");
+        audio1.play();
+        break;
+        case "t":
+        var audio1 = new Audio("tunes/t.wav");
+        audio1.play();
+        break; 
+        case "g":
+        var audio1 = new Audio("tunes/g.wav");
+        audio1.play();
+        break;
+
+        case "y":
+        var audio1 = new Audio("tunes/y.wav");
+        audio1.play();
+        break;
+        case "h":
+        var audio1 = new Audio("tunes/h.wav");
+        audio1.play();
+        break;
+        case "u":
+
+        var audio1 = new Audio("tunes/u.wav");
+        audio1.play();
+        break;
+
+        case "j":
+        var audio1 = new Audio("tunes/j.wav");
+        audio1.play();
+        break;
+
+        case "i":
+        var audio1 = new Audio("tunes/i.wav");
+        audio1.play();
+        break;
+        case "k":
+
+        var audio1 = new Audio("tunes/k.wav");
+        audio1.play();
+        break;
+        case "o":
+        var audio1 = new Audio("tunes/o.wav");
+        audio1.play();
+        break;
+        case "l":
+        var audio1 = new Audio("tunes/l.wav");
+        audio1.play();
+        break;
+        case "p":
+        var audio1 = new Audio("tunes/p.wav");
+        audio1.play();
+        break;
+        case ";":
+        var audio1 = new Audio("tunes/;.wav");
+        audio1.play();
+        break;
+
+
+
+
+
+
+    }
+  }
+
+  function ButtonAnimation(currentKey) {
+    var activeKey = document.querySelector("." + currentKey);
+    activeKey.classList.add("pressed");
+    setTimeout(function () {
+      activeKey.classList.remove("pressed");
+    }, 100
+    );
+  }
+</script>
+
+</html>
